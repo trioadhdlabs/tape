@@ -1,0 +1,5 @@
+title: Tape
+description: A simple, private trading journal for day and swing trades.
+theme: jekyll-theme-primer
+# Set app_store_id (the App Store Apple ID) once Tape is live: it turns on the badges.
+exclude: [README.md]

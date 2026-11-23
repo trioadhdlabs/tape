@@ -1,0 +1,296 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+// Tape — slate cassette with green/red candles, colors from the app icon.
+$bg: #10141b;
+$ink: #eef1f6;
+$muted: #9aa3b2;
+$green: #3ecf8e;
+$red: #f26b6b;
+$card: rgba(255, 255, 255, 0.04);
+$line: rgba(255, 255, 255, 0.09);
+$mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+html { background: $bg; }
+
+body {
+  min-height: 100vh;
+  color: $ink;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 105%, rgba(62, 207, 142, 0.16), transparent 70%),
+    linear-gradient(180deg, #252c3a 0%, #181d27 45%, $bg 100%);
+  background-color: $bg;
+  background-attachment: fixed;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+.container-lg { max-width: 820px; }
+
+// ---------- Shared text styles ----------
+.markdown-body {
+  color: $ink;
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 1.65;
+
+  h1, h2, h3 {
+    color: $ink;
+    border-bottom: 0;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  a { color: $green; }
+  a:hover { color: lighten($green, 12%); }
+  strong { color: #fff; }
+  p, li { color: $ink; }
+  em { color: $muted; }
+  hr { background-color: $line; }
+  code { background: rgba(255, 255, 255, 0.08); color: $ink; }
+}
+
+// ---------- Home ----------
+.hero {
+  text-align: center;
+  padding: 24px 0 8px;
+
+  .app-icon {
+    width: 148px;
+    height: 148px;
+    border-radius: 33px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px $line;
+    background: none;
+  }
+  h1 {
+    margin: 28px 0 0;
+    padding: 0;
+    font-size: 3.8em;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .kicker {
+    margin: 8px 0 0;
+    color: $green;
+    font-family: $mono;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-size: 0.8em;
+  }
+  .lede {
+    margin: 20px auto 28px;
+    max-width: 480px;
+    color: $muted;
+    font-size: 1.2em;
+  }
+  .badge img { background: none; }
+  .soon {
+    display: inline-block;
+    margin: 0;
+    padding: 8px 18px;
+    border: 1px solid $line;
+    border-radius: 999px;
+    background: $card;
+    color: $ink;
+    font-size: 0.95em;
+  }
+
+  // A row of candles, like the icon's cassette label.
+  .candles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    height: 80px;
+    margin: 28px 0 0;
+    span {
+      position: relative;
+      width: 14px;
+      height: var(--h);
+      border-radius: 3px;
+      transform: translateY(var(--y));
+      &::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: -8px;
+        bottom: -8px;
+        width: 2px;
+        border-radius: 1px;
+        background: inherit;
+      }
+    }
+    .up { background: $green; }
+    .down { background: $red; }
+  }
+}
+
+.shots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 40px 0 0;
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    background: none;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px $line;
+  }
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 40px 0 32px;
+
+  .feature {
+    background: $card;
+    border: 1px solid $line;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+  h3 { margin: 0 0 6px; font-size: 1.1em; }
+  p { margin: 0; color: $muted; font-size: 0.95em; line-height: 1.5; }
+}
+
+.footer-links {
+  text-align: center;
+  margin: 0 0 16px;
+  color: $muted;
+  a { margin: 0 10px; }
+}
+
+// ---------- Support / Privacy ----------
+.topbar {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 20px 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: $ink;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.25em;
+    img { border-radius: 8px; box-shadow: 0 0 0 1px $line; }
+  }
+  nav {
+    display: flex;
+    gap: 6px;
+    a {
+      color: $muted;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.95em;
+      border: 1px solid transparent;
+    }
+    a:hover { color: $ink; }
+    a.active { color: $green; border-color: rgba(62, 207, 142, 0.35); background: rgba(62, 207, 142, 0.08); }
+  }
+}
+
+.subpage .container-lg { max-width: 760px; }
+
+.subpage .markdown-body {
+  margin-top: 28px !important;
+  background: $card;
+  border: 1px solid $line;
+  border-radius: 20px;
+  padding: 40px 36px !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+
+  // Page title + the line under it.
+  > h1:first-child {
+    text-align: center;
+    font-size: 2.4em;
+    line-height: 1.1;
+    margin: 0 0 8px;
+  }
+  > h1:first-child + p {
+    text-align: center;
+    font-size: 0.9em;
+    color: $muted;
+    margin-bottom: 28px;
+  }
+
+  // Section headings with a short green/red tape stripe.
+  h2 {
+    font-size: 1.35em;
+    margin-top: 36px;
+    padding-bottom: 0;
+    &::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 4px;
+      margin-top: 6px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, $green 50%, $red 50%);
+    }
+  }
+
+  // Contact callout.
+  #contact + p {
+    background: rgba(62, 207, 142, 0.08);
+    border: 1px solid rgba(62, 207, 142, 0.25);
+    border-radius: 14px;
+    padding: 16px 20px;
+  }
+
+  // Support Q&A: each question becomes its own card.
+  #common-questions ~ p {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid $line;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    color: $muted;
+    > strong:first-child {
+      display: block;
+      margin-bottom: 4px;
+      color: $ink;
+      font-size: 1.02em;
+    }
+  }
+  // Sections after the questions stay plain text.
+  #privacy ~ p {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: $ink;
+  }
+}
+
+.page-footer {
+  text-align: center;
+  padding: 8px 16px 40px;
+  color: $muted;
+  .badge img { background: none; }
+  p { margin: 14px 0 0; }
+  a { color: $muted; }
+  a:hover { color: $green; }
+}
+
+@media (max-width: 600px) {
+  .shots { grid-template-columns: 1fr; max-width: 300px; margin-left: auto; margin-right: auto; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 3em; }
+  .features { grid-template-columns: 1fr; }
+  .subpage .markdown-body { padding: 28px 20px !important; }
+  .subpage .markdown-body > h1:first-child { font-size: 1.9em; }
+  .topbar { justify-content: center; }
+}
